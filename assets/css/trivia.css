@@ -1,0 +1,13 @@
+body {
+	background-image: url("../images/spooky.png");
+	text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    opacity: 0.5;
+}
+
+#header {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 40px;
+    
+}

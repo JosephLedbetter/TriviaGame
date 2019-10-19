@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link type="text/css" rel="stylesheet" href="assets/css/trivia.css">
+
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="header" class="jumbotron jumbotron-fluid">
+            <div class="container">
+                  <h1 class="display-4">Spooky Trivia</h1>
+                  <p class="lead">Test your knowledge of your favorite Halloween characters. You have ten attempts to name those ghouls. Good Luck!</p>
+            </div>
+        </div>
+        <div id="content-container">
+            <button id="start-game">Begin your test</button>
+                <div id="countdown"></div>
+                <div id="question-number"></div>
+                <div id="physical-question"></div>
+                <div id="answers"></div>
+
+                <div id="wrong-answer-message"></div>
+                <div id="correct-answer-message"></div>
+
+                <div id="final-answer"></div>
+                <div id="right-answer"></div>
+                <div id="wrong-answer"></div>
+                <div id="blank-answer"></div>
+        </div>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+    <script src="assets/trivia.js"></script>
+</body>
+</html>
