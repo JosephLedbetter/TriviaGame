@@ -88,10 +88,17 @@ for (let i = 0; i < 4; i++) {
 
 timeLeft();
 
-$(".pick").on("click"), function() {
+$(".pick").on("click", function() {
     selectedAnswer = $(this).data("index");
     clearInterval(timer);
     answerName();
     }
-};
+)};
 
+function timeLeft() {
+
+    seconds = 15;
+    $("#countdown").html("<h2>On the clock: " + seconds + "</h2>");
+    answers = true;
+    timer = setInterval(count, 1000);
+};
