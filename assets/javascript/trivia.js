@@ -1,4 +1,6 @@
 
+$(document).ready(function() {
+
 let triviaQuestions = [{ 
     question: "What ghoul flies on a broom stick with a screeching cackle?",
     list: ["Swamp Monster", "Big Foot", "Black Cats", "Witches"],
@@ -38,7 +40,7 @@ let triviaQuestions = [{
 }, {
     question: "Loves human brains and only exist after being buried and coming back to life?",
     list: ["Vampire", "Ghost", "Zombie", "Werewolf"],
-    answer: 0
+    
 }];
 
 // trivia multiple choice answer right || wrong
@@ -102,3 +104,30 @@ function timeLeft() {
     answers = true;
     timer = setInterval(count, 1000);
 };
+
+function count(){
+
+    seconds--;
+    $("#countdown").html("<h2>On the clock: " + seconds + "</h2>");
+    if (seconds < 1) { 
+        clearInterval(timer);
+        answers = false;
+        answerName();
+    }
+};
+
+let message = {
+    correct: "You're correct!",
+    incorrect: "You're incorrect",
+    timeLeft: "Try your best",
+    gameEnd: "Finished? Check your answers"
+}
+
+function answerName() {
+    $("#question-number").empty();
+    $(".pick").empty();
+    $("#physical-question").empty();
+
+let matchingAnswer = triviaQuestions[questionNumber].list[triviaQuestions[questionNumber].answer];
+
+
