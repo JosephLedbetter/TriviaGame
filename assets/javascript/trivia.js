@@ -71,7 +71,7 @@ function startGame() {
 };
 
 function nextQuestion() {
-$("#wrong-answer-message").empty();
+$("#response-message").empty();
 $("#correct-answer-message").empty();
 
 $("#question-number").html("Question: " + (questionNumber + 1) + "/" + triviaQuestions.length);
@@ -94,84 +94,4 @@ $(".pick").on("click"), function() {
     answerName();
     }
 };
-
-function timeLeft() {
-
-    seconds = 15;
-    $("#countdown").html("<h2>On the clock: " + seconds + "</h2>");
-    answers = true;
-    timer = setInterval(count, 1000);
-};
-
-function count(){
-
-    seconds--;
-    $("#countdown").html("<h2>On the clock: " + seconds + "</h2>");
-    if (seconds < 1) { 
-        clearInterval(timer);
-        answer = false;
-        answerName();
-    }
-};
-
-let message = {
-    correct: "You're correct!",
-    incorrect: "You're incorrect",
-    timeLeft: "Try your best",
-    gameEnd: "Finished? Check your answers"
-}
-
-function answerName() {
-    $("#question-number").empty();
-    $("#pick").empty();
-    $("#physical-question");
-
-let matchingAnswer = triviaQuestions[questionNumber].list[triviaQuestions[questionNumber].answer];
-
-let correctMatch = triviaQuestions[questionNumber].answer;
-
-if ((selectedAnswer == correctMatch) && (answer == true)) {
-    rightAnswer++;
-    $("#response-message").html(message.right);
-    $("#correct-answer-message").html("The correct answer was: " + matchingAnswer);
-}
-
-else if ((selectedAnswer !== correctMatch) && (answer == true)) {
-    wrongAnswer++;
-    $("#response-message").html(message.wrong);
-    $("#correct-answer-message").html("The correct answer was: " + matchingAnswer);
-}
-
-else {
-    blankAnswer++;
-    $("#response-message").html(message.timeLeft);
-    $("#correct-answer-message").html("The correct answer was: " + matchingAnswer);
-}
-
-if (questionNumber == (triviaQuestions.length - 1 )){
-    setTimeout(score, 2000);
-}
-
-else {
-    questionNumber++;
-    setTimeout(nextQuestion, 2000);
-}
-
-};
-
-function scoreTotal() {
-    $("#start-game").show();
-    $("#countdown").empty();
-    $("#response-message").empty();
-    $("#correct-answer-message").empty();
-
-    $("#final-answer").html(message.gameEnd);
-    $("#right-answer").html("Right Answers: " + rightAnswer);
-    $("#wrong-answer").html("Wrong Answers: " + wrongAnswer);
-    $("#blank-answer").html("Blank Answer: " + blankAnswer);
-};
-
-
-
-
 
