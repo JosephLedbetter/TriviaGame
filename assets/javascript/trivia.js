@@ -1,51 +1,50 @@
-$(documnet).ready(function() {
 
 let triviaQuestions = [{ 
     question: "What ghoul flies on a broom stick with a screeching cackle?",
-    lists: ["Swamp Monster", "Big Foot", "Black Cats", "Witches"],
+    list: ["Swamp Monster", "Big Foot", "Black Cats", "Witches"],
     answer: 3,
 }, {
     question: "What ghoul resides in a snowy climate, larger than grizzly, and white all over?",
-    lists: ["Big Foot", "Swamp Monster", "Frankenstein", "Abominable Snowman"],
+    list: ["Big Foot", "Swamp Monster", "Frankenstein", "Abominable Snowman"],
     answer: 3,
 }, {
     question: "This character is wrapped and buried, believe to live under the Pyramids of Egypt?",
-    lists: ["Bats", "Mummies", "Frankenstein", "Headless Horse"],
+    list: ["Bats", "Mummies", "Frankenstein", "Headless Horse"],
     answer: 1,
 }, {
     question: "What animal is black all over and believed to be bad luck?",
-    lists: ["Rat", "Cat", "Bat", "Snake"],
+    list: ["Rat", "Cat", "Bat", "Snake"],
     answer: 1,
 }, {
     question: "Believed to be made of multiple men and brought back to life by an evil genius?",
-    lists: ["Abominable Snowman", "Big Foot", "Frankenstein", "Daffy Duck"],
+    list: ["Abominable Snowman", "Big Foot", "Frankenstein", "Daffy Duck"],
     answer: 2,
 }, {
     question: "Which ghoul lives if responsible for UFO conspiracies?",
-    lists: ["Big Foot", "Alien", "Witch", "Cousin It"],
+    list: ["Big Foot", "Alien", "Witch", "Cousin It"],
     answer: 1,
 }, {
     question: "Who is slimy, loves the water, and snatches people out of their boats?",
-    lists: ["Swamp Monster", "Mummy", "Witch", "Frankenstein"],
+    list: ["Swamp Monster", "Mummy", "Witch", "Frankenstein"],
     answer: 0,
 }, {
     question: "He/She sleeps upside down, hypnotize beautiful damsels, and survives on drinking their blood?",
-    lists: ["Swamp Monster", "Frankenstein", "Dracula", "Elvis"],
+    list: ["Swamp Monster", "Frankenstein", "Dracula", "Elvis"],
     answer: 2,
 }, {
     question: "Screeching spirit that haunts cementaries?",
-    lists: ["Banshee", "Vampire", "Witch", "Zombie"],
+    list: ["Banshee", "Vampire", "Witch", "Zombie"],
     answer: 0,
 }, {
     question: "Loves human brains and only exist after being buried and coming back to life?",
-    lists: ["Vampire", "Ghost", "Zombie", "Werewolf"],
+    list: ["Vampire", "Ghost", "Zombie", "Werewolf"],
     answer: 0
 }];
 
 // trivia multiple choice answer right || wrong
 let questionNumber;
 let rightAnswer;
-let wrongAnser;
+let wrongAnswer;
 let blankAnswer;
 
 // timer & answer placeholders
@@ -68,5 +67,111 @@ function startGame() {
     rightAnswer = 0;
     wrongAnswer = 0;
     blankAnswer = 0;
-    nextQuestions();
+    nextQuestion();
 };
+
+function nextQuestion() {
+$("#wrong-answer-message").empty();
+$("#correct-answer-message").empty();
+
+$("#question-number").html("Question: " + (questionNumber + 1) + "/" + triviaQuestions.length);
+
+$("#physical-question").html("<h2>" + triviaQuestions[questionNumber].question + "</h2>");
+
+for (let i = 0; i < 4; i++) {
+    let selection = $("<div>");
+    selection.text(triviaQuestions[questionNumber].list[i]);
+    selection.attr({"data-index" : i});
+    selection.addClass("pick");
+    $("#answers").append(selection);
+}
+
+timeLeft();
+
+$(".pick").on("click"), function() {
+    selectedAnswer = $(this).data("index");
+    clearInterval(timer);
+    answerName();
+    }
+};
+
+function timeLeft() {
+
+    seconds = 15;
+    $("#countdown").html("<h2>On the clock: " + seconds + "</h2>");
+    answers = true;
+    timer = setInterval(count, 1000);
+};
+
+function count(){
+
+    seconds--;
+    $("#countdown").html("<h2>On the clock: " + seconds + "</h2>");
+    if (seconds < 1) { 
+        clearInterval(timer);
+        answer = false;
+        answerName();
+    }
+};
+
+let message = {
+    correct: "You're correct!",
+    incorrect: "You're incorrect",
+    timeLeft: "Try your best",
+    gameEnd: "Finished? Check your answers"
+}
+
+function answerName() {
+    $("#question-number").empty();
+    $("#pick").empty();
+    $("#physical-question");
+
+let matchingAnswer = triviaQuestions[questionNumber].list[triviaQuestions[questionNumber].answer];
+
+let correctMatch = triviaQuestions[questionNumber].answer;
+
+if ((selectedAnswer == correctMatch) && (answer == true)) {
+    rightAnswer++;
+    $("#response-message").html(message.right);
+    $("#correct-answer-message").html("The correct answer was: " + matchingAnswer);
+}
+
+else if ((selectedAnswer !== correctMatch) && (answer == true)) {
+    wrongAnswer++;
+    $("#response-message").html(message.wrong);
+    $("#correct-answer-message").html("The correct answer was: " + matchingAnswer);
+}
+
+else {
+    blankAnswer++;
+    $("#response-message").html(message.timeLeft);
+    $("#correct-answer-message").html("The correct answer was: " + matchingAnswer);
+}
+
+if (questionNumber == (triviaQuestions.length - 1 )){
+    setTimeout(score, 2000);
+}
+
+else {
+    questionNumber++;
+    setTimeout(nextQuestion, 2000);
+}
+
+};
+
+function scoreTotal() {
+    $("#start-game").show();
+    $("#countdown").empty();
+    $("#response-message").empty();
+    $("#correct-answer-message").empty();
+
+    $("#final-answer").html(message.gameEnd);
+    $("#right-answer").html("Right Answers: " + rightAnswer);
+    $("#wrong-answer").html("Wrong Answers: " + wrongAnswer);
+    $("#blank-answer").html("Blank Answer: " + blankAnswer);
+};
+
+
+
+
+
