@@ -161,6 +161,19 @@ else {
 
 };
 
+function scoreTotal() {
+    $("#start-game").show();
+    $("#countdown").empty();
+    $("#response-message").empty();
+    $("#correct-answer-message").empty();
+
+    $("#final-answer").html(message.gameEnd);
+    $("#right-answer").html("Right Answers: " + wrongAnswer);
+    $("#wrong-answer").html("Wrong Answers: " + rightAnswer);
+    $("#blank-answer").html("Blank Answer: " + blankAnswer);
+};
+
+})
 
 
 
