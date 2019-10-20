@@ -42,16 +42,3 @@ let triviaQuestions = [{
     answer: 0
 }];
 
-// trivia multiple choice answer right || wrong
-let questionNumber;
-let rightAnswer;
-let wrongAnser;
-let blankAnswer;
-
-// timer & answer placeholders
-let seconds;
-let timer;
-let answers;
-let selectedAnswer;
-
-
