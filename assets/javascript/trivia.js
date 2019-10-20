@@ -59,3 +59,14 @@ $("#start-game").on("click", function() {
     startGame();
     });
 
+function startGame() {
+    $("#final-answer").empty();
+    $("#right-answer").empty();
+    $("#wrong-answer").empty();
+    $("#blank-answer").empty();
+    questionNumber = 0;
+    rightAnswer = 0;
+    wrongAnswer = 0;
+    blankAnswer = 0;
+    nextQuestions();
+};
