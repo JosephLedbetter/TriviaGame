@@ -40,7 +40,7 @@ let triviaQuestions = [{
 }, {
     question: "Loves human brains and only exist after being buried and coming back to life?",
     list: ["Vampire", "Ghost", "Zombie", "Werewolf"],
-    
+    answer: 2
 }];
 
 // trivia multiple choice answer right || wrong
@@ -129,5 +129,38 @@ function answerName() {
     $("#physical-question").empty();
 
 let matchingAnswer = triviaQuestions[questionNumber].list[triviaQuestions[questionNumber].answer];
+
+
+let correctMatch = triviaQuestions[questionNumber].answers;
+
+if ((selectedAnswer == correctMatch) && (answers == true)) {
+    rightAnswer++;
+    $("#response-message").html(message.right);
+}
+
+else if ((selectedAnswer != correctMatch) && (answers == true)) {
+    wrongAnswer++;
+    $("#response-message").html(message.wrong);
+    $("#correct-answer-message").html("The correct answer was: " + matchingAnswer);
+}
+
+else {
+    blankAnswer++;
+    $("#response-message").html(message.timeLeft);
+    $("#correct-answer-message").html("The correct answer was: " + matchingAnswer);
+}
+
+if (questionNumber == (triviaQuestions.length - 1 )){
+    setTimeout(scoreTotal, 2000);
+}
+
+else {
+    questionNumber++;
+    setTimeout(nextQuestion, 2000);
+}
+
+};
+
+
 
 
