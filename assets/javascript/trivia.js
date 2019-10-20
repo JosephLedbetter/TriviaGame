@@ -54,3 +54,8 @@ let timer;
 let answers;
 let selectedAnswer;
 
+$("#start-game").on("click", function() {
+    $("#start-game").hide();
+    startGame();
+    });
+
