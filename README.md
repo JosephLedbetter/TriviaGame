@@ -5,4 +5,4 @@
 matched with the answers. You will continue through each question and will receive a total score at the end of the game</p>
 
 <h3> Active Link</h3>
-<p></p>
+<p>https://josephledbetter.github.io/TriviaGame/</p>
